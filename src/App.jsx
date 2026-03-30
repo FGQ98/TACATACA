@@ -3,6 +3,10 @@ import { useAuth } from './context/AuthContext'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
 import BriefWizard from './pages/BriefWizard'
+import Research from './pages/Research'
+import Structure from './pages/Structure'
+import Stack from './pages/Stack'
+import Security from './pages/Security'
 import Generator from './pages/Generator'
 import Layout from './components/Layout'
 import PrivateRoute from './components/PrivateRoute'
@@ -26,6 +30,10 @@ export default function App() {
         <Route element={<Layout />}>
           <Route path="/" element={<Dashboard />} />
           <Route path="/proyecto/:projectId/brief" element={<BriefWizard />} />
+          <Route path="/proyecto/:projectId/investigacion" element={<Research />} />
+          <Route path="/proyecto/:projectId/estructura" element={<Structure />} />
+          <Route path="/proyecto/:projectId/stack" element={<Stack />} />
+          <Route path="/proyecto/:projectId/seguridad" element={<Security />} />
           <Route path="/proyecto/:projectId/generador" element={<Generator />} />
         </Route>
       </Route>

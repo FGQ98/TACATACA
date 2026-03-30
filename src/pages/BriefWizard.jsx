@@ -37,8 +37,7 @@ export default function BriefWizard() {
 
   function handleNext() {
     if (isLast) {
-      // Ir a la siguiente área (Investigación - placeholder por ahora)
-      navigate(`/proyecto/${projectId}/generador`)
+      navigate(`/proyecto/${projectId}/investigacion`)
     } else {
       setCurrentStep((s) => s + 1)
     }
