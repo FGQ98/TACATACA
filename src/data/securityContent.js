@@ -1,26 +1,26 @@
 // Área 5: Seguridad — Las llaves del negocio
-// Taca genera matriz de permisos y capas de seguridad desde el Brief.
-// Fuente: Documento Maestro v3 — Principio Cero, CVEB, 9 capas, 3-2-1
+// Taca analiza, propone y explica. El usuario confirma.
+// Principio Cero, CVEB, 9 capas, backups 3-2-1 del Documento Maestro v3
 
 export const SECURITY_STEPS = [
   {
     id: 'llavero',
     title: 'El llavero',
     subtitle: 'Paso 1 de 4 · Las llaves del negocio',
-    tacaRecommendation: 'No es lo mismo la llave de la puerta principal que la de la caja fuerte. Taca ha extraído los roles de tu Brief y propone una jerarquía de acceso. La seguridad es proporcional: más cerradura donde hay más que proteger.',
-    questionsTitle: 'Roles y acceso',
+    tacaRecommendation: 'He extraído los roles de tu Brief y he montado la jerarquía de acceso. La seguridad es proporcional: más cerradura donde hay más que proteger, no la misma cerradura en todas las puertas. Confirma si los roles son correctos.',
+    questionsTitle: 'Roles detectados — confirma o ajusta',
     questions: [
       {
         id: 'roles_confirmados',
-        label: 'Confirma los roles de tu proyecto (Taca los extrajo del Brief)',
+        label: 'Taca ha detectado estos roles en tu Brief. ¿Son correctos?',
         hint: 'Ajusta, añade o quita lo que no aplique.',
-        placeholder: 'Admin, usuario registrado, visitante, proveedor, editor...',
+        placeholder: 'Admin, usuario registrado, visitante, proveedor...',
         type: 'textarea',
       },
       {
         id: 'rol_mas_sensible',
-        label: '¿Qué rol accede a la información más sensible?',
-        hint: 'Taca asignará el nivel más alto de protección a este rol.',
+        label: '¿Cuál de esos roles accede a lo más sensible?',
+        hint: 'Taca asignará la protección más alta a este rol.',
         placeholder: 'Normalmente el admin, pero a veces hay roles con acceso a datos financieros...',
         type: 'textarea',
       },
@@ -41,13 +41,13 @@ export const SECURITY_STEPS = [
     id: 'cerraduras',
     title: 'Las cerraduras',
     subtitle: 'Paso 2 de 4 · Las llaves del negocio',
-    tacaRecommendation: 'Taca va a generar la matriz CVEB (Crear, Ver, Editar, Borrar) por pantalla y por rol en el Prompt Pack. Necesito que me confirmes quién puede hacer qué con los datos más importantes.',
-    questionsTitle: 'Permisos por pantalla',
+    tacaRecommendation: 'Taca va a generar la matriz CVEB (Crear, Ver, Editar, Borrar) completa por pantalla y por rol. Cada acción lleva un candado proporcional. Necesito que confirmes los accesos principales.',
+    questionsTitle: 'Quién ve qué — confirma',
     questions: [
       {
         id: 'pantallas_publicas',
         label: '¿Qué puede ver cualquiera SIN registrarse?',
-        placeholder: 'Landing, página de precios, blog, documentación... o "nada, todo requiere login".',
+        placeholder: 'Landing, precios, blog... o "nada, todo requiere login".',
         type: 'textarea',
       },
       {
@@ -59,14 +59,14 @@ export const SECURITY_STEPS = [
       {
         id: 'pantallas_admin',
         label: '¿Qué ve solo el administrador?',
-        placeholder: 'Panel admin, gestión de usuarios, métricas, configuración global...',
+        placeholder: 'Panel admin, gestión usuarios, métricas, config global...',
         type: 'textarea',
       },
       {
         id: 'quien_borra',
         label: '¿Quién puede borrar datos y cuáles?',
-        hint: 'Regla de mínimo privilegio: cada rol solo puede borrar lo estrictamente necesario.',
-        placeholder: 'El usuario borra los suyos, el admin borra todo, nadie borra pagos...',
+        hint: 'Mínimo privilegio: cada rol solo borra lo estrictamente necesario.',
+        placeholder: 'Usuario borra los suyos, admin borra todo, nadie borra pagos...',
         type: 'textarea',
       },
     ],
@@ -75,18 +75,18 @@ export const SECURITY_STEPS = [
     id: 'alarma',
     title: 'La alarma',
     subtitle: 'Paso 3 de 4 · Las llaves del negocio',
-    tacaRecommendation: 'Más allá de quién entra y qué ve, hay 9 capas de protección. No todas desde el día 1, pero Taca necesita saber cuáles activar ahora y cuáles planificar.',
-    recommendationTitle: 'Las 9 capas de seguridad',
+    tacaRecommendation: 'Taca ha montado las 9 capas de seguridad para tu proyecto. Las marcadas como MVP se activan desde el día 1. Las de Fase 2 se planifican ahora y se activan cuando crezcas. Confirma el nivel de sensibilidad de tus datos.',
+    recommendationTitle: 'Las 9 capas de seguridad de Taca',
     recommendations: [
-      { label: '1. Principio Cero', description: 'Ceguera de plataforma: no accede al contenido de las cuentas. Solo métricas de uso. Por diseño técnico, no por promesa.', highlight: true, badge: 'Diseño' },
-      { label: '2. HTTPS', description: 'Tráfico cifrado entre usuario y servidor. Obligatorio.', badge: 'MVP' },
-      { label: '3. Autenticación', description: 'Firebase Auth o equivalente. Email + contraseña como mínimo.', badge: 'MVP' },
-      { label: '4. Reglas de base de datos', description: 'Firestore Security Rules o equivalente. Cada usuario solo accede a sus datos.', badge: 'MVP' },
-      { label: '5. Secretos fuera del código', description: 'Variables de entorno (.env) fuera del repositorio. Nunca claves en el código.', badge: 'MVP' },
-      { label: '6. Repositorio privado', description: 'GitHub private. El código no es público.', badge: 'MVP' },
-      { label: '7. Monitorización de errores', description: 'Sentry o similar. Saber cuándo falla algo antes que el usuario.', badge: 'Fase 2' },
-      { label: '8. Cabeceras HTTP', description: 'Helmet.js o equivalente. Protección contra ataques comunes.', badge: 'Fase 2' },
-      { label: '9. Email verificado', description: 'Verificación de email al registrarse. Reduce spam y cuentas falsas.', badge: 'MVP' },
+      { label: '1. Principio Cero', description: 'Ceguera de plataforma: no accede al contenido. Solo métricas de uso. Por diseño técnico, no por promesa.', highlight: true, badge: 'Diseño' },
+      { label: '2. HTTPS', description: 'Tráfico cifrado. Obligatorio.', badge: 'MVP' },
+      { label: '3. Autenticación', description: 'Firebase Auth o equivalente. Email + contraseña mínimo.', badge: 'MVP' },
+      { label: '4. Reglas de BD', description: 'Cada usuario solo accede a sus datos. Reglas a nivel servidor.', badge: 'MVP' },
+      { label: '5. Secretos fuera del código', description: 'Variables de entorno (.env). Nunca claves en el repositorio.', badge: 'MVP' },
+      { label: '6. Repo privado', description: 'GitHub private. El código no es público.', badge: 'MVP' },
+      { label: '7. Monitor de errores', description: 'Sentry o similar. Saber cuándo falla algo.', badge: 'Fase 2' },
+      { label: '8. Cabeceras HTTP', description: 'Helmet.js. Protección contra ataques comunes.', badge: 'Fase 2' },
+      { label: '9. Email verificado', description: 'Verificación al registrarse. Reduce spam.', badge: 'MVP' },
     ],
     questionsTitle: 'Nivel de sensibilidad',
     questions: [
@@ -98,13 +98,13 @@ export const SECURITY_STEPS = [
           { value: 'minimo', label: 'Mínimo — Solo email para login' },
           { value: 'moderado', label: 'Moderado — Nombre, email, preferencias' },
           { value: 'extenso', label: 'Extenso — Dirección, teléfono, documentos' },
-          { value: 'sensible', label: 'Sensible — Datos financieros, salud, identidad' },
+          { value: 'sensible', label: 'Sensible — Financieros, salud, identidad' },
         ],
       },
       {
         id: 'pais_usuarios',
         label: '¿Dónde están tus usuarios?',
-        hint: 'Esto determina qué regulación aplica (GDPR, LOPDGDD, etc.).',
+        hint: 'Determina qué regulación aplica.',
         type: 'select',
         options: [
           { value: 'espana', label: 'España — GDPR + LOPDGDD' },
@@ -119,7 +119,7 @@ export const SECURITY_STEPS = [
     id: 'seguro',
     title: 'El seguro',
     subtitle: 'Paso 4 de 4 · Las llaves del negocio',
-    tacaRecommendation: 'Taca generará un plan de backups 3-2-1 (3 copias, 2 medios, 1 fuera de sitio) adaptado a tu proyecto, un plan de contingencia, y un checklist legal con plantillas. Necesito saber cuánto te duele perder datos.',
+    tacaRecommendation: 'Taca generará un plan de backups 3-2-1 (3 copias, 2 medios diferentes, 1 fuera de sitio), un plan de contingencia, y un checklist legal con plantillas adaptadas a tu regulación. Solo necesito saber cuánto te duele perder datos.',
     questionsTitle: 'Backups, contingencia y legal',
     questions: [
       {
@@ -129,23 +129,23 @@ export const SECURITY_STEPS = [
         options: [
           { value: 'catastrofe', label: 'Catástrofe — El negocio se para' },
           { value: 'grave', label: 'Grave — Semanas de trabajo perdido' },
-          { value: 'molesto', label: 'Molesto — Podría reconstruir relativamente rápido' },
+          { value: 'molesto', label: 'Molesto — Podría reconstruir rápido' },
           { value: 'indiferente', label: 'Indiferente — No hay datos que perder aún' },
         ],
       },
       {
         id: 'legal_sector',
-        label: '¿Hay algo específico de tu sector que afecte a la seguridad?',
-        hint: 'Taca incluirá esto en el checklist legal del Prompt Pack.',
-        placeholder: 'Certificaciones, auditorías, normativa sectorial, contratos con terceros... o "nada especial".',
+        label: '¿Hay algo de tu sector que afecte a la seguridad?',
+        hint: 'Taca lo incluirá en el checklist legal.',
+        placeholder: 'Certificaciones, auditorías, normativa sectorial... o "nada especial".',
         type: 'textarea',
       },
       {
-        id: 'confirma_seguridad',
-        label: '¿Quieres que Taca genere la matriz CVEB completa y el plan de seguridad en el Prompt Pack?',
+        id: 'acepta_seguridad',
+        label: '¿Quieres que Taca genere el plan de seguridad completo?',
         type: 'confirm',
         options: [
-          { value: 'si', label: 'Sí, genera todo' },
+          { value: 'completo', label: 'Sí, plan completo' },
           { value: 'basico', label: 'Solo lo básico del MVP' },
         ],
       },

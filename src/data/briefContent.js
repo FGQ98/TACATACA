@@ -1,6 +1,5 @@
 // Contenido didáctico del Brief — La consulta médica
 // Separado de la interfaz: cambiar una analogía no toca ningún componente
-// Es la carta del restaurante vs la cocina
 
 export const AREAS = [
   { id: 'brief', name: 'Brief', analogy: 'La consulta médica', icon: '1' },
@@ -175,7 +174,7 @@ export const BRIEF_STEPS = [
     title: 'El riesgo',
     subtitle: 'Paso 5 de 5 · La consulta médica',
     context: {
-      text: 'Todo plan tiene grietas. Mejor encontrarlas ahora que cuando ya has construido tres plantas. No es pesimismo — es el chaleco salvavidas antes de navegar.',
+      text: 'Taca ha analizado tus respuestas anteriores y ha detectado posibles riesgos para tu proyecto. Revisa lo que ha encontrado, confirma si es correcto, y añade lo que Taca no pueda saber.',
     },
     example: {
       bad: '"No hay riesgos, mi idea es buena"',
@@ -184,14 +183,14 @@ export const BRIEF_STEPS = [
     questions: [
       {
         id: 'dependencias',
-        label: '¿De qué servicio externo depende tu proyecto para funcionar?',
-        placeholder: 'APIs, plataformas de pago, proveedores de datos, herramientas de terceros...',
+        label: 'Taca pregunta: ¿Tu proyecto depende de algún servicio externo para funcionar?',
+        placeholder: 'APIs, plataformas de pago, proveedores de datos, herramientas de terceros... Si no lo sabes, escribe "no lo sé" y Taca lo evaluará en el área de Stack.',
         type: 'textarea',
       },
       {
         id: 'regulacion',
-        label: '¿Qué regulación afecta a tu proyecto?',
-        placeholder: 'GDPR, protección de datos, licencias sectoriales, normativa de pagos...',
+        label: 'Taca pregunta: ¿Sabes si hay alguna regulación que afecte a tu proyecto?',
+        placeholder: 'GDPR, protección de datos, licencias sectoriales... Si no lo sabes, escribe "no lo sé" y Taca lo analizará en Seguridad.',
         type: 'textarea',
       },
       {
@@ -209,8 +208,8 @@ export const BRIEF_STEPS = [
       },
     ],
     validation: {
-      label: '¿Cuál es tu plan B si el MVP no funciona como esperas?',
-      placeholder: 'Pivotar, simplificar más, buscar otro público, abandonar... No hay respuesta mala, solo respuestas sinceras.',
+      label: '¿Hay algo que te preocupe y que no hayamos tocado en este Brief?',
+      placeholder: 'Cualquier duda, miedo o intuición. Taca lo tendrá en cuenta en las siguientes áreas.',
     },
   },
 ]

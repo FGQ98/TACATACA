@@ -1,25 +1,25 @@
 // Área 4: Stack — Las instalaciones del local
-// Taca recomienda proveedores con prescripción transparente.
-// Fuente: Documento Maestro v3 — 5 preguntas + 5 filtros + nivel dependencia
+// Taca elige proveedores con prescripción transparente. El usuario confirma.
+// 5 preguntas + 5 filtros + dependencia del Documento Maestro v3
 
 export const STACK_STEPS = [
   {
     id: 'acometidas',
     title: 'Las acometidas',
     subtitle: 'Paso 1 de 4 · Las instalaciones del local',
-    tacaRecommendation: 'Cuando abres un local, no fabricas la electricidad ni el agua. Contratas proveedores. Taca ha analizado tu Brief y estas son las instalaciones que tu proyecto necesita. Confirma cuáles aplican.',
-    recommendationTitle: 'Servicios que tu proyecto necesita',
+    tacaRecommendation: 'He analizado tu Brief, tu arquitectura y tus roles. Estas son las instalaciones que tu proyecto necesita. Las marcadas son imprescindibles — las demás dependen de tus respuestas anteriores.',
+    recommendationTitle: 'Servicios detectados por Taca',
     recommendations: [
-      { label: 'Base de datos', description: 'Dónde viven los datos de tus usuarios y tu negocio. Imprescindible si guardas cualquier tipo de información.', badge: 'Probable', highlight: true },
-      { label: 'Autenticación', description: 'Login y registro de usuarios. Quién entra y con qué credenciales.', badge: 'Probable', highlight: true },
-      { label: 'Hosting / Deploy', description: 'Dónde vive tu proyecto en internet. Cómo llegan los usuarios a él.', badge: 'Siempre', highlight: true },
-      { label: 'Control de versiones', description: 'El historial completo de tu código. Cada cambio registrado y reversible.', badge: 'Siempre', highlight: true },
-      { label: 'Email transaccional', description: 'Confirmaciones, recuperación de contraseña, notificaciones al usuario.' },
-      { label: 'Pasarela de pagos', description: 'Cobrar a los usuarios. Suscripciones, pagos puntuales, facturación.' },
-      { label: 'Almacenamiento de archivos', description: 'Subir y guardar imágenes, PDFs, documentos de usuario.' },
-      { label: 'Monitorización de errores', description: 'Saber cuándo algo falla antes de que el usuario te lo diga.' },
+      { label: 'Base de datos', description: 'Dónde viven los datos de usuarios y negocio.', badge: 'Imprescindible', highlight: true },
+      { label: 'Autenticación', description: 'Login y registro. Quién entra y con qué credenciales.', badge: 'Imprescindible', highlight: true },
+      { label: 'Hosting / Deploy', description: 'Dónde vive tu proyecto en internet.', badge: 'Imprescindible', highlight: true },
+      { label: 'Control de versiones', description: 'Historial de código. Cada cambio registrado y reversible.', badge: 'Imprescindible', highlight: true },
+      { label: 'Email transaccional', description: 'Confirmaciones, recuperación contraseña, notificaciones.' },
+      { label: 'Pasarela de pagos', description: 'Cobrar a usuarios. Suscripciones o pagos puntuales.' },
+      { label: 'Almacenamiento de archivos', description: 'Subir y guardar imágenes, PDFs, documentos.' },
+      { label: 'Monitorización de errores', description: 'Saber cuándo falla algo antes que el usuario.', badge: 'Fase 2' },
     ],
-    questionsTitle: '¿Qué necesita tu proyecto?',
+    questionsTitle: 'Confirma lo que necesitas',
     questions: [
       {
         id: 'necesita_pagos',
@@ -34,7 +34,7 @@ export const STACK_STEPS = [
       },
       {
         id: 'necesita_archivos',
-        label: '¿Los usuarios subirán archivos (imágenes, documentos)?',
+        label: '¿Los usuarios subirán archivos?',
         type: 'select',
         options: [
           { value: 'si', label: 'Sí' },
@@ -44,8 +44,8 @@ export const STACK_STEPS = [
       },
       {
         id: 'servicios_extra',
-        label: '¿Necesitas algún servicio que no esté en la lista?',
-        placeholder: 'Mapas, geolocalización, chat en tiempo real, SMS, IA, traducciones...',
+        label: '¿Necesitas algo que no esté en la lista de Taca?',
+        placeholder: 'Mapas, chat en tiempo real, SMS, IA, traducciones... o "nada más".',
         type: 'textarea',
         small: true,
       },
@@ -55,21 +55,21 @@ export const STACK_STEPS = [
     id: 'contadores',
     title: 'Los contadores',
     subtitle: 'Paso 2 de 4 · Las instalaciones del local',
-    tacaRecommendation: 'Para cada servicio, Taca aplica la prescripción transparente: 5 preguntas que todo proveedor debe responder. Sin comisiones, sin intereses comerciales. Si un proveedor no puede responder estas 5 preguntas, no merece tu confianza.',
-    recommendationTitle: 'Los 5 filtros de Taca para cada proveedor',
+    tacaRecommendation: 'Para cada servicio, Taca elige un proveedor y lo somete a la prescripción transparente: 5 filtros que todo proveedor debe pasar. Sin comisiones, sin intereses comerciales. Si no pasa los 5, no entra.',
+    recommendationTitle: 'Los 5 filtros de prescripción transparente',
     recommendations: [
-      { label: 'Madurez', description: '¿Lleva +3 años operando con empresa sólida detrás?', highlight: true },
-      { label: 'Plan gratuito', description: '¿Tiene plan gratis suficiente para MVP de 0-50 usuarios?' },
-      { label: 'Portabilidad', description: '¿Puedes exportar tus datos e irte fácilmente?' },
-      { label: 'Documentación', description: '¿Tiene documentación comprensible en inglés como mínimo?' },
-      { label: 'Comunidad', description: '¿Tiene foros activos con respuestas recientes?' },
+      { label: '1. Madurez', description: '+3 años operando, empresa sólida detrás.', highlight: true },
+      { label: '2. Plan gratuito', description: 'Suficiente para MVP de 0-50 usuarios.' },
+      { label: '3. Portabilidad', description: 'Export en formato estándar. Puedes irte sin drama.' },
+      { label: '4. Documentación', description: 'Comprensible, en inglés como mínimo.' },
+      { label: '5. Comunidad', description: 'Foros activos con respuestas recientes.' },
     ],
-    questionsTitle: 'Tus preferencias',
+    questionsTitle: 'Tus preferencias (Taca las tendrá en cuenta)',
     questions: [
       {
         id: 'experiencia_tech',
         label: '¿Tienes experiencia con alguna tecnología o proveedor?',
-        placeholder: 'Firebase, AWS, Stripe, Wordpress, Shopify... o "ninguna, soy nuevo"',
+        placeholder: 'Firebase, AWS, Stripe, Wordpress... o "ninguna, soy nuevo".',
         type: 'textarea',
       },
       {
@@ -78,9 +78,9 @@ export const STACK_STEPS = [
         type: 'select',
         options: [
           { value: '0', label: '0€ — Solo planes gratuitos' },
-          { value: '1_20', label: '1-20€/mes — Lo básico' },
-          { value: '20_100', label: '20-100€/mes — Hay margen' },
-          { value: '100_plus', label: '+100€/mes — Sin restricción' },
+          { value: '1_20', label: '1-20€/mes' },
+          { value: '20_100', label: '20-100€/mes' },
+          { value: '100_plus', label: '+100€/mes' },
         ],
       },
       {
@@ -88,10 +88,10 @@ export const STACK_STEPS = [
         label: '¿Qué priorizas?',
         type: 'select',
         options: [
-          { value: 'facilidad', label: 'Facilidad — Que sea simple de configurar' },
-          { value: 'precio', label: 'Precio — Lo más barato posible' },
-          { value: 'escalado', label: 'Escalado — Que aguante si crece mucho' },
-          { value: 'control', label: 'Control — Que pueda moverme fácil si cambio' },
+          { value: 'facilidad', label: 'Facilidad — Que sea simple' },
+          { value: 'precio', label: 'Precio — Lo más barato' },
+          { value: 'escalado', label: 'Escalado — Que aguante crecimiento' },
+          { value: 'control', label: 'Control — Poder irme fácil si cambio' },
         ],
       },
     ],
@@ -100,14 +100,13 @@ export const STACK_STEPS = [
     id: 'instalacion',
     title: 'La instalación',
     subtitle: 'Paso 3 de 4 · Las instalaciones del local',
-    tacaRecommendation: 'Taca generará el circuito completo de conexiones en el Prompt Pack: de dónde salen los datos, por dónde pasan, dónde se guardan, cómo llegan al usuario. Necesito confirmar algunos puntos del recorrido.',
-    questionsTitle: 'El circuito de tu proyecto',
+    tacaRecommendation: 'Taca montará el circuito completo de conexiones en tu Prompt Pack: de dónde salen los datos, por dónde pasan, dónde se guardan, cómo llegan al usuario. Cada proveedor con su etiqueta de dependencia (baja/media/alta). Confirma estos puntos del recorrido.',
+    questionsTitle: 'El circuito',
     questions: [
       {
         id: 'flujo_datos',
         label: '¿De dónde vienen los datos principales?',
-        hint: 'Taca necesita saber esto para diseñar el circuito de conexiones.',
-        placeholder: 'Los usuarios los meten, se importan de otro sistema, se generan automáticamente...',
+        placeholder: 'Los usuarios los meten, se importan de otro sistema, se generan solos...',
         type: 'textarea',
       },
       {
@@ -115,20 +114,20 @@ export const STACK_STEPS = [
         label: '¿Cómo llega el usuario a tu producto?',
         type: 'select',
         options: [
-          { value: 'url_directa', label: 'URL directa — Escribe la dirección o busca en Google' },
-          { value: 'app_store', label: 'App Store — Descarga la app' },
-          { value: 'invitacion', label: 'Invitación — Alguien le manda un enlace' },
-          { value: 'embebido', label: 'Embebido — Dentro de otra plataforma' },
+          { value: 'url_directa', label: 'URL directa o buscador' },
+          { value: 'app_store', label: 'App Store / Play Store' },
+          { value: 'invitacion', label: 'Invitación de otro usuario' },
+          { value: 'embebido', label: 'Dentro de otra plataforma' },
         ],
       },
       {
         id: 'offline',
-        label: '¿Tu producto necesita funcionar sin conexión?',
+        label: '¿Necesita funcionar sin conexión?',
         type: 'select',
         options: [
           { value: 'no', label: 'No, siempre online' },
-          { value: 'parcial', label: 'Parcialmente — consultar datos offline' },
-          { value: 'si', label: 'Sí, funcionalidad completa offline' },
+          { value: 'parcial', label: 'Parcialmente' },
+          { value: 'si', label: 'Sí, completa offline' },
         ],
       },
     ],
@@ -137,8 +136,8 @@ export const STACK_STEPS = [
     id: 'recibo',
     title: 'El recibo',
     subtitle: 'Paso 4 de 4 · Las instalaciones del local',
-    tacaRecommendation: 'La buena noticia: empezar un proyecto digital hoy cuesta una fracción de lo que costaba hace 5 años. Taca calculará los costes reales en el Prompt Pack con 3 escenarios: hoy, 50 usuarios, 500+ usuarios. Cada proveedor con su etiqueta de dependencia (baja/media/alta).',
-    questionsTitle: 'Escala y datos sensibles',
+    tacaRecommendation: 'Taca calculará los costes reales con 3 escenarios en el Prompt Pack: arranque (~12€/año), 50 usuarios (~30€/mes), 500+ usuarios (~120€/mes). Cada proveedor con su coste desglosado y su nivel de dependencia. Necesito confirmar tu escala esperada.',
+    questionsTitle: 'Escala y sensibilidad',
     questions: [
       {
         id: 'usuarios_esperados',
@@ -153,20 +152,20 @@ export const STACK_STEPS = [
       },
       {
         id: 'dato_sensible',
-        label: '¿Tu proyecto maneja datos financieros o de salud?',
-        hint: 'Esto afecta al nivel de seguridad y al tipo de proveedor que Taca recomendará.',
+        label: '¿Manejas datos financieros o de salud?',
+        hint: 'Afecta al proveedor y al nivel de seguridad.',
         type: 'select',
         options: [
-          { value: 'no', label: 'No — Datos básicos de perfil y uso' },
-          { value: 'financiero', label: 'Sí, datos financieros' },
-          { value: 'salud', label: 'Sí, datos de salud' },
+          { value: 'no', label: 'No — Datos básicos' },
+          { value: 'financiero', label: 'Sí, financieros' },
+          { value: 'salud', label: 'Sí, salud' },
           { value: 'ambos', label: 'Ambos' },
         ],
       },
       {
         id: 'notas_stack',
-        label: '¿Algo más que Taca deba saber sobre tu infraestructura?',
-        placeholder: 'Requisitos especiales, preferencias, experiencias pasadas...',
+        label: '¿Algo que Taca deba saber?',
+        placeholder: 'Requisitos especiales, preferencias, malas experiencias anteriores... o "nada".',
         type: 'textarea',
         small: true,
       },
