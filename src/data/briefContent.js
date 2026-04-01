@@ -60,8 +60,15 @@ export const BRIEF_STEPS = [
     },
     questions: [
       {
+        id: 'que_hace',
+        label: '¿Qué hace tu proyecto?',
+        placeholder: 'Describe en lenguaje sencillo qué hace tu producto: qué problema resuelve, cómo lo resuelve, para quién...',
+        type: 'textarea',
+      },
+      {
         id: 'tipo_proyecto',
-        label: '¿Qué tipo de proyecto es?',
+        label: '¿Tienes pensado un modelo de estos?',
+        hint: 'Si no lo tienes claro, elige "No lo sé" y Taca te ayudará a decidir.',
         placeholder: '',
         type: 'select',
         options: [
@@ -70,6 +77,7 @@ export const BRIEF_STEPS = [
           { value: 'herramienta', label: 'Herramienta — Resuelve una tarea concreta' },
           { value: 'web', label: 'Web / Landing — Presencia online' },
           { value: 'app', label: 'App móvil — Experiencia nativa' },
+          { value: 'no_se', label: 'No lo sé — Que Taca recomiende' },
         ],
       },
       {
@@ -184,7 +192,7 @@ export const BRIEF_STEPS = [
       {
         id: 'dependencias',
         label: 'Taca pregunta: ¿Tu proyecto depende de algún servicio externo para funcionar?',
-        placeholder: 'APIs, plataformas de pago, proveedores de datos, herramientas de terceros... Si no lo sabes, escribe "no lo sé" y Taca lo evaluará en el área de Stack.',
+        placeholder: 'APIs, plataformas de pago, proveedores de datos... Si no lo sabes, escribe "no lo sé" y Taca lo evaluará en Stack.',
         type: 'textarea',
       },
       {
