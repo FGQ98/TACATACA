@@ -44,13 +44,14 @@ export function useProjects() {
     return unsubscribe
   }, [user])
 
-  async function createProject(name, type) {
+  async function createProject(name, type, userType) {
     if (!user) return null
 
     const ref = await addDoc(collection(db, 'projects'), {
       userId: user.uid,
       name,
       type: type || '',
+      userType: userType || 'solo', // 'solo' | 'pro'
       status: 'nuevo',
       currentArea: 1,
       currentStep: 1,
