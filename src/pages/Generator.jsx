@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom'
 import { useGenerator } from '../hooks/useGenerator'
 import { downloadAsMarkdown, copyToClipboard } from '../utils/exportUtils'
 
-const PURPLE = '#534AB7'
+const PURPLE = '#7E6DAD'
 const GREEN = '#1D9E75'
 
 export default function Generator() {

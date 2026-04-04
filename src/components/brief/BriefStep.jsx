@@ -1,4 +1,4 @@
-const PURPLE = '#534AB7'
+const PURPLE = '#7E6DAD'
 
 export default function BriefStep({ step, answers, onAnswer }) {
   const stepAnswers = answers[step.id] || {}

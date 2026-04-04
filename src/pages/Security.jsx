@@ -7,7 +7,7 @@ import { SECURITY_STEPS } from '../data/securityContent'
 import StepIndicator from '../components/StepIndicator'
 import AreaStep from '../components/AreaStep'
 
-const PURPLE = '#534AB7'
+const PURPLE = '#7E6DAD'
 
 export default function Security() {
   const { projectId } = useParams()

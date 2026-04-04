@@ -7,7 +7,14 @@ export default function Layout() {
   return (
     <div className="layout">
       <header className="layout-header">
-        <Link to="/" className="layout-brand">tacataca</Link>
+        <Link to="/" className="layout-brand" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <img
+            src="/taca-logo.png"
+            alt="Taca"
+            style={{ width: '28px', height: 'auto' }}
+          />
+          tacataca
+        </Link>
         <div className="layout-user">
           <span className="layout-email">{user?.email}</span>
           <button className="btn-logout" onClick={logout}>

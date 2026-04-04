@@ -7,7 +7,7 @@ import { STRUCTURE_STEPS } from '../data/structureContent'
 import StepIndicator from '../components/StepIndicator'
 import AreaStep from '../components/AreaStep'
 
-const PURPLE = '#534AB7'
+const PURPLE = '#7E6DAD'
 
 export default function Structure() {
   const { projectId } = useParams()

@@ -1,4 +1,4 @@
-const PURPLE = '#534AB7'
+const PURPLE = '#7E6DAD'
 const GREEN = '#1D9E75'
 
 export default function TacaRecommendation({ text, type = 'info' }) {

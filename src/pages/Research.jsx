@@ -7,7 +7,7 @@ import { RESEARCH_STEPS } from '../data/researchContent'
 import StepIndicator from '../components/StepIndicator'
 import AreaStep from '../components/AreaStep'
 
-const PURPLE = '#534AB7'
+const PURPLE = '#7E6DAD'
 
 export default function Research() {
   const { projectId } = useParams()

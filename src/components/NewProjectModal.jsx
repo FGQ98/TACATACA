@@ -60,7 +60,7 @@ export default function NewProjectModal({ onClose }) {
                 borderRadius: '20px',
                 fontSize: '12px',
                 fontWeight: '500',
-                color: userType === 'solo' ? '#534AB7' : '#2E7D32',
+                color: userType === 'solo' ? '#7E6DAD' : '#2E7D32',
                 marginBottom: '16px',
                 cursor: 'pointer',
               }}

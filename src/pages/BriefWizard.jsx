@@ -7,7 +7,7 @@ import { BRIEF_STEPS } from '../data/briefContent'
 import StepIndicator from '../components/StepIndicator'
 import BriefStep from '../components/brief/BriefStep'
 
-const PURPLE = '#534AB7'
+const PURPLE = '#7E6DAD'
 
 export default function BriefWizard() {
   const { projectId } = useParams()

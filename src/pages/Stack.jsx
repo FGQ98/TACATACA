@@ -7,7 +7,7 @@ import { STACK_STEPS } from '../data/stackContent'
 import StepIndicator from '../components/StepIndicator'
 import AreaStep from '../components/AreaStep'
 
-const PURPLE = '#534AB7'
+const PURPLE = '#7E6DAD'
 
 export default function Stack() {
   const { projectId } = useParams()
