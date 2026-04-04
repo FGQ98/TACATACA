@@ -37,6 +37,15 @@ export default function Login() {
   return (
     <div className="login-page">
       <div className="login-container">
+        <img
+          src="/taca-logo.png"
+          alt="Taca — el ciempiés"
+          style={{
+            width: '180px',
+            height: 'auto',
+            marginBottom: '8px',
+          }}
+        />
         <div className="login-logo">tacataca</div>
         <p className="login-claim">De la idea al plan. Del plan a la acción.</p>
 

@@ -4,8 +4,8 @@
   --tc-purple: #534AB7;
   --tc-purple-light: #EEEDFE;
   --tc-purple-mid: #AFA9EC;
-  --tc-green: #1D9E75;
-  --tc-green-light: #E1F5EE;
+  --tc-green: #4E9A6B;
+  --tc-green-light: #E5F2E8;
   --tc-text: #1a1a1a;
   --tc-text-secondary: #6b6b6b;
   --tc-text-hint: #9b9b9b;
@@ -20,8 +20,8 @@
   --tc-danger-light: #FCEBEB;
   --tc-warning: #BA7517;
   --tc-warning-light: #FAEEDA;
-  --tc-success: #1D9E75;
-  --tc-success-light: #E1F5EE;
+  --tc-success: #4E9A6B;
+  --tc-success-light: #E5F2E8;
 }
 
 * {
