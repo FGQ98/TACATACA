@@ -1,5 +1,17 @@
 // Contenido didáctico del Brief — La consulta médica
 // Separado de la interfaz: cambiar una analogía no toca ningún componente
+//
+// REORIENTACIÓN v4 (abril 2026):
+// TACATACA no valida ideas de negocio. No juzga si la idea es buena o mala.
+// TACATACA ayuda a entender qué funcionalidades necesitas, qué experiencia
+// de usuario quieres ofrecer, y las respuestas técnicas para conseguirlo.
+// Filosofía: seguridad, robustez, eficiencia económica, capacidad de escala.
+//
+// Paso 1: El dolor del EMPRENDEDOR (no del cliente final)
+// Paso 2: Qué hace tu producto (especificación técnica, no validación)
+// Paso 3: El alcance (qué entra en el MVP)
+// Paso 4: El usuario (roles y experiencia, para diseño y seguridad)
+// Paso 5: El riesgo técnico (dependencias, regulación, puntos de fallo)
 
 export const AREAS = [
   { id: 'brief', name: 'Brief', analogy: 'La consulta médica', icon: '1' },
@@ -13,126 +25,168 @@ export const AREAS = [
 export const BRIEF_STEPS = [
   {
     id: 'dolor',
-    title: 'El dolor',
+    title: 'Tu punto de partida',
     subtitle: 'Paso 1 de 5 · La consulta médica',
     context: {
-      text: 'Imagina que vas al médico. No le dices "quiero pastillas azules". Le describes qué te duele, desde cuándo, y qué has probado. Aquí es lo mismo: cuéntame el problema que quieres resolver, no la solución que imaginas.',
+      text: 'Antes de hablar de tu proyecto, hablemos de ti. Un arquitecto no diseña igual para alguien que va a construir su primera casa que para alguien que ya ha hecho tres. Tus recursos, tu experiencia y tu tiempo condicionan qué plan tiene sentido para ti.',
     },
     example: {
-      bad: '"Quiero una app para gestionar eventos"',
-      good: '"Mis clientes pierden 3h/semana coordinando proveedores por WhatsApp y no tienen visibilidad de costes"',
+      bad: '"Quiero una app con IA, blockchain y 20 pantallas. Presupuesto: ya veremos"',
+      good: '"No sé programar, tengo 3 meses y puedo invertir unos 50€/mes en servicios. Necesito algo que funcione con lo mínimo"',
     },
     questions: [
       {
-        id: 'problema_actual',
-        label: '¿Cómo resuelve HOY tu cliente este problema SIN tu producto?',
-        placeholder: 'Describe la situación actual: qué herramientas usa, qué proceso sigue, dónde falla...',
-        type: 'textarea',
+        id: 'experiencia_tech',
+        label: '¿Cuál es tu experiencia con tecnología y desarrollo?',
+        placeholder: '',
+        type: 'select',
+        options: [
+          { value: 'ninguna', label: 'Ninguna — No he construido nada digital' },
+          { value: 'usuario', label: 'Usuario — Uso apps y webs pero no las construyo' },
+          { value: 'basica', label: 'Básica — He tocado alguna herramienta no-code o similar' },
+          { value: 'media', label: 'Media — He participado en algún proyecto digital' },
+          { value: 'alta', label: 'Alta — He construido o dirigido proyectos digitales' },
+        ],
       },
       {
-        id: 'coste_problema',
-        label: '¿Cuánto pierde por semana (tiempo, dinero, clientes)?',
-        placeholder: 'Sé concreto: horas perdidas, euros, oportunidades que se escapan...',
-        type: 'textarea',
+        id: 'presupuesto',
+        label: '¿Cuánto puedes invertir mensualmente en tu proyecto (servidores, servicios, herramientas)?',
+        hint: 'Sé realista. "Ya veré" es la respuesta que más proyectos hunde. Hay opciones buenas desde 0€.',
+        placeholder: '',
+        type: 'select',
+        options: [
+          { value: '0', label: '0€ — Solo herramientas gratuitas' },
+          { value: '10-30', label: '10-30€/mes — Lo básico' },
+          { value: '30-100', label: '30-100€/mes — Margen para servicios pro' },
+          { value: '100+', label: '+100€/mes — Puedo invertir con criterio' },
+          { value: 'no_se', label: 'No lo sé — Que Taca me ayude a calcular' },
+        ],
       },
       {
-        id: 'conversaciones',
-        label: '¿Has hablado con al menos 3 personas que tengan este problema?',
-        placeholder: 'Cuéntame con quién has hablado y qué te dijeron...',
+        id: 'tiempo_dedicacion',
+        label: '¿Cuánto tiempo puedes dedicar al proyecto por semana?',
+        hint: 'Incluye todo: planificar, decidir, revisar, coordinar. No solo "programar" (que no harás tú).',
+        placeholder: '',
+        type: 'select',
+        options: [
+          { value: 'pocas_horas', label: '2-5 horas/semana — Lo hago en ratos libres' },
+          { value: 'media_jornada', label: '10-20 horas/semana — Le dedico tardes o mañanas' },
+          { value: 'dedicacion_plena', label: '+20 horas/semana — Es mi actividad principal' },
+        ],
+      },
+      {
+        id: 'dolor_emprendedor',
+        label: '¿Qué es lo que más te frena o preocupa para arrancar?',
+        hint: 'No hay respuesta mala. Saber qué te frena nos ayuda a calibrar el plan.',
+        placeholder: 'No sé por dónde empezar, me pierdo con la tecnología, no sé cuánto me va a costar, me da miedo elegir mal...',
         type: 'textarea',
       },
     ],
     validation: {
-      label: 'Si mañana desapareciera tu proyecto, ¿qué haría tu cliente?',
-      placeholder: '¿Volvería a lo de antes sin problema o tendría un problema real?',
+      label: '¿Has intentado hacer algo parecido antes? ¿Qué pasó?',
+      placeholder: 'Si es tu primera vez, dilo. Si lo has intentado y no salió, cuéntame qué falló. Eso calibra el plan.',
     },
   },
   {
     id: 'modelo',
-    title: 'El modelo',
+    title: 'Qué hace tu producto',
     subtitle: 'Paso 2 de 5 · La consulta médica',
     context: {
-      text: 'Ahora que sabemos qué duele, toca ponerle nombre al tratamiento. ¿Es una tienda, una herramienta, un servicio? No es lo mismo una aspirina que una operación. Esta decisión condiciona todo lo que viene después.',
+      text: 'No vamos a evaluar si tu idea es buena o mala — eso es asunto tuyo. Vamos a entender qué tiene que HACER tu producto. No es lo mismo una tienda que un taller. Esta decisión condiciona cuántas pantallas necesitas, qué servicios contratar y qué seguridad aplicar.',
     },
     example: {
       bad: '"Es como un Uber pero de otra cosa"',
-      good: '"Es una herramienta SaaS donde empresas de eventos gestionan proveedores pagando una cuota mensual"',
+      good: '"Es una herramienta donde organizadores de eventos suben presupuestos, asignan proveedores y ven costes en tiempo real"',
     },
     questions: [
       {
         id: 'que_hace',
-        label: '¿Qué hace tu proyecto?',
-        placeholder: 'Describe en lenguaje sencillo qué hace tu producto: qué problema resuelve, cómo lo resuelve, para quién...',
+        label: '¿Qué tiene que poder hacer tu producto? Describe las acciones principales.',
+        hint: 'No nos importa el modelo de negocio ahora. Nos importa qué HACE: crear, buscar, comparar, reservar, gestionar...',
+        placeholder: 'El usuario entra y puede: crear X, ver Y, gestionar Z, compartir W...',
         type: 'textarea',
       },
       {
         id: 'tipo_proyecto',
-        label: '¿Tienes pensado un modelo de estos?',
-        hint: 'Si no lo tienes claro, elige "No lo sé" y Taca te ayudará a decidir.',
+        label: '¿Qué tipo de producto se parece más a lo que imaginas?',
+        hint: 'Esto condiciona la arquitectura técnica. Si no lo tienes claro, elige "No lo sé".',
         placeholder: '',
         type: 'select',
         options: [
-          { value: 'saas', label: 'SaaS — Software como servicio (cuota recurrente)' },
-          { value: 'marketplace', label: 'Marketplace — Conecta oferta y demanda' },
-          { value: 'herramienta', label: 'Herramienta — Resuelve una tarea concreta' },
-          { value: 'web', label: 'Web / Landing — Presencia online' },
-          { value: 'app', label: 'App móvil — Experiencia nativa' },
-          { value: 'no_se', label: 'No lo sé — Que Taca recomiende' },
+          { value: 'saas', label: 'SaaS — Plataforma con login, datos por usuario, uso continuo' },
+          { value: 'marketplace', label: 'Marketplace — Conecta dos lados (quien ofrece y quien busca)' },
+          { value: 'herramienta', label: 'Herramienta — Resuelve una tarea concreta, uso puntual' },
+          { value: 'web', label: 'Web / Landing — Presencia online, información, captación' },
+          { value: 'app', label: 'App móvil — Experiencia nativa en móvil' },
+          { value: 'no_se', label: 'No lo sé — Que Taca recomiende según lo que hace' },
         ],
       },
       {
-        id: 'publico',
-        label: '¿Quién paga?',
+        id: 'cobra_usuarios',
+        label: '¿Tu producto va a cobrar a los usuarios?',
+        hint: 'Esto es una pregunta técnica: si cobras, necesitas pasarela de pago, gestión de planes, facturación. Si no, no.',
         placeholder: '',
         type: 'select',
         options: [
-          { value: 'b2b', label: 'Empresas (B2B) — Tu cliente es otra empresa' },
-          { value: 'b2c', label: 'Consumidores (B2C) — Tu cliente es persona final' },
-          { value: 'b2b2c', label: 'Ambos (B2B2C) — Empresas que sirven a consumidores' },
+          { value: 'si_suscripcion', label: 'Sí, con suscripción periódica' },
+          { value: 'si_pago_unico', label: 'Sí, con pago único' },
+          { value: 'si_freemium', label: 'Freemium — Gratis con opciones de pago' },
+          { value: 'no', label: 'No, es gratuito' },
+          { value: 'no_se', label: 'No lo sé todavía' },
         ],
       },
       {
-        id: 'modelo_descripcion',
-        label: 'Describe tu modelo en una frase: quién usa qué y cómo paga.',
-        placeholder: 'Ejemplo: "Organizadores de eventos contratan el servicio mensual para coordinar proveedores"',
-        type: 'textarea',
+        id: 'datos_terceros',
+        label: '¿Tu producto maneja datos de otras personas (clientes, pacientes, alumnos...)?',
+        hint: 'Si tu app guarda datos de terceros, la seguridad y la regulación cambian. Esto condiciona el área de Seguridad.',
+        placeholder: '',
+        type: 'select',
+        options: [
+          { value: 'no', label: 'No — Solo mis propios datos' },
+          { value: 'si_basicos', label: 'Sí — Datos básicos (nombre, email)' },
+          { value: 'si_sensibles', label: 'Sí — Datos sensibles (salud, finanzas, menores)' },
+          { value: 'no_se', label: 'No lo sé' },
+        ],
       },
     ],
     validation: {
-      label: 'Si tu modelo fuera un local físico, ¿qué tipo de local sería?',
-      placeholder: 'Tienda, consultoría, mercadillo, gimnasio, taller... Esto revela cómo funciona tu negocio.',
+      label: 'Describe tu producto en una frase: quién entra, qué hace, y qué se lleva.',
+      placeholder: 'Ejemplo: "Profesores entran, suben material, sus alumnos acceden y lo descargan". Simple y concreto.',
     },
     irreversible: true,
-    irreversibleNote: 'El tipo de proyecto y el público condicionan la estructura, el stack y la seguridad. Cambiar esto después implica replantear casi todo.',
+    irreversibleNote: 'El tipo de producto condiciona la estructura, el stack y la seguridad. Cambiar esto después implica replantear la arquitectura.',
   },
   {
     id: 'alcance',
     title: 'El alcance',
     subtitle: 'Paso 3 de 5 · La consulta médica',
     context: {
-      text: 'El error clásico: querer construir un hospital cuando necesitas un botiquín. El MVP es la versión más pequeña que demuestra que tu idea funciona. No es el producto final — es la prueba de que merece existir.',
+      text: 'El error clásico: querer construir un hospital cuando necesitas un botiquín. El MVP es la versión más pequeña de tu producto que funciona de verdad. No es el producto final — es el punto de partida con lo mínimo que tiene sentido.',
     },
     example: {
       bad: '"Necesito chat, pagos, IA, dashboard, notificaciones, app móvil y versión desktop"',
-      good: '"Para validar solo necesito que el usuario pueda crear un evento y compartirlo con proveedores"',
+      good: '"Para empezar solo necesito que el usuario pueda crear un evento y compartirlo con proveedores"',
     },
     questions: [
       {
         id: 'funcionalidades',
         label: 'Lista todas las funcionalidades que imaginas para tu producto.',
-        placeholder: 'Escribe todas, sin filtrar. Ya las priorizaremos después...',
+        hint: 'Escribe todas, sin filtrar. El paso siguiente es priorizar.',
+        placeholder: 'Login, dashboard, crear X, editar Y, buscar Z, exportar, compartir, notificar...',
         type: 'textarea',
       },
       {
         id: 'test_excel',
         label: '¿Cuáles de esas funcionalidades podrían resolverse con un Excel o un WhatsApp?',
-        placeholder: 'Sé honesto. El test del Excel no falla: si se puede hacer con una hoja de cálculo, no es MVP...',
+        hint: 'El test del Excel no falla: si se puede hacer con una hoja de cálculo, no es MVP.',
+        placeholder: 'Sé honesto. Las que sobrevivan a este test son las que importan...',
         type: 'textarea',
       },
       {
         id: 'verguenza_quitar',
         label: '¿Qué te da vergüenza quitar del MVP?',
-        placeholder: 'Eso que te da vergüenza quitar probablemente es lo primero que sobra...',
+        hint: 'Eso que te da vergüenza quitar probablemente es lo primero que sobra.',
+        placeholder: 'Lo que crees imprescindible pero que quizás puede esperar...',
         type: 'textarea',
       },
     ],
@@ -146,29 +200,32 @@ export const BRIEF_STEPS = [
     title: 'El usuario',
     subtitle: 'Paso 4 de 5 · La consulta médica',
     context: {
-      text: 'No todos los que entran a tu local hacen lo mismo. Hay quien mira, quien compra, quien gestiona el stock. Cada uno necesita ver cosas diferentes y hacer cosas diferentes. Definir esto ahora evita un lío monumental después.',
+      text: 'No todos los que entran a tu local hacen lo mismo. Hay quien mira, quien compra, quien gestiona el stock. Cada rol necesita ver cosas diferentes y poder hacer cosas diferentes. Definir esto ahora evita un lío monumental después y alimenta directamente la seguridad.',
     },
     example: {
       bad: '"Los usuarios usan la app"',
-      good: '"El organizador crea eventos, el proveedor confirma disponibilidad y sube presupuesto, el cliente compra entradas"',
+      good: '"El organizador crea eventos y ve costes. El proveedor confirma y sube presupuesto. El cliente solo compra entradas"',
     },
     questions: [
       {
         id: 'roles',
         label: '¿Qué tipos de usuario tendrá tu producto?',
-        placeholder: 'Administrador, cliente, proveedor, visitante... Cada rol es un tipo de persona con permisos diferentes.',
+        hint: 'Cada rol es un tipo de persona con permisos diferentes. Piensa en quién CREA, quién VE y quién GESTIONA.',
+        placeholder: 'Administrador, cliente, proveedor, visitante...',
         type: 'textarea',
       },
       {
         id: 'caminos',
         label: '¿Qué camino sigue cada rol desde que entra hasta que consigue lo que busca?',
+        hint: 'Esto define las pantallas que necesitas y cómo se conectan.',
         placeholder: 'Rol 1: entra → ve X → hace Y → consigue Z. Rol 2: entra → ve A → hace B...',
         type: 'textarea',
       },
       {
         id: 'dispositivo',
         label: '¿Desde qué dispositivo usará cada rol tu producto?',
-        placeholder: '¿Móvil, desktop, tablet? ¿Hay algún rol que SOLO usa móvil? Esto afecta al diseño.',
+        hint: '¿Hay algún rol que SOLO usa móvil? Esto condiciona el diseño responsive.',
+        placeholder: 'Administrador: desktop. Clientes: móvil. Proveedores: ambos...',
         type: 'textarea',
       },
     ],
@@ -179,45 +236,41 @@ export const BRIEF_STEPS = [
   },
   {
     id: 'riesgo',
-    title: 'El riesgo',
+    title: 'El riesgo técnico',
     subtitle: 'Paso 5 de 5 · La consulta médica',
     context: {
-      text: 'Taca ha analizado tus respuestas anteriores y ha detectado posibles riesgos para tu proyecto. Revisa lo que ha encontrado, confirma si es correcto, y añade lo que Taca no pueda saber.',
+      text: 'Todo proyecto tiene puntos de fallo. No hablamos de si la idea funcionará en el mercado — eso no lo sabemos. Hablamos de qué puede fallar técnicamente: dependencias de terceros, regulaciones que cumplir, piezas que si caen se llevan todo por delante.',
     },
     example: {
-      bad: '"No hay riesgos, mi idea es buena"',
-      good: '"Dependo de la API de Google Maps y si cambian precios me afecta al 60% de la funcionalidad. Mi competidor principal tiene 10x mi presupuesto."',
+      bad: '"No hay riesgos, todo está controlado"',
+      good: '"Dependo de la API de Google Maps para el 60% de las funcionalidades. Si cambian el precio, tengo un problema. Y manejo datos de salud, así que necesito cumplir con GDPR reforzado"',
     },
     questions: [
       {
         id: 'dependencias',
-        label: 'Taca pregunta: ¿Tu proyecto depende de algún servicio externo para funcionar?',
-        placeholder: 'APIs, plataformas de pago, proveedores de datos... Si no lo sabes, escribe "no lo sé" y Taca lo evaluará en Stack.',
+        label: '¿Tu proyecto depende de algún servicio externo para funcionar?',
+        hint: 'APIs, plataformas de pago, servicios de email, mapas, IA... Cada dependencia es un riesgo técnico que Taca evaluará en Stack.',
+        placeholder: 'Google Maps, Stripe, API de WhatsApp... o "no lo sé, que Taca lo evalúe"',
         type: 'textarea',
       },
       {
         id: 'regulacion',
-        label: 'Taca pregunta: ¿Sabes si hay alguna regulación que afecte a tu proyecto?',
-        placeholder: 'GDPR, protección de datos, licencias sectoriales... Si no lo sabes, escribe "no lo sé" y Taca lo analizará en Seguridad.',
+        label: '¿Tu producto toca datos personales, financieros o de sectores regulados?',
+        hint: 'Datos de salud, menores, pagos con tarjeta, sector financiero... Cada uno tiene requisitos técnicos específicos.',
+        placeholder: 'Datos médicos, datos de menores, pagos online... o "no lo sé"',
         type: 'textarea',
       },
       {
-        id: 'confianza',
-        label: 'Del 1 al 5, ¿cuánta confianza tienes en que tu MVP funcione en 3 meses?',
-        placeholder: '',
-        type: 'select',
-        options: [
-          { value: '1', label: '1 — Muy poca, tengo muchas dudas' },
-          { value: '2', label: '2 — Poca, hay bastantes incógnitas' },
-          { value: '3', label: '3 — Media, algunas cosas claras y otras no' },
-          { value: '4', label: '4 — Alta, tengo el plan bastante claro' },
-          { value: '5', label: '5 — Muy alta, sé exactamente qué hacer' },
-        ],
+        id: 'punto_fallo',
+        label: '¿Hay alguna pieza que, si falla, se lleva todo por delante?',
+        hint: 'Un único proveedor sin alternativa, un flujo que si no funciona el producto no sirve para nada...',
+        placeholder: 'Si la pasarela de pago se cae, nadie puede comprar. Si el mapa no carga, la app no tiene sentido...',
+        type: 'textarea',
       },
     ],
     validation: {
       label: '¿Hay algo que te preocupe y que no hayamos tocado en este Brief?',
-      placeholder: 'Cualquier duda, miedo o intuición. Taca lo tendrá en cuenta en las siguientes áreas.',
+      placeholder: 'Cualquier duda técnica, presupuestaria o de capacidad. Taca lo tendrá en cuenta en las siguientes áreas.',
     },
   },
 ]
